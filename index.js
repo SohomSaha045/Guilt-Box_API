@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 require("dotenv").config();
 // Create an instance of the Express application
 const {getMessages}=require('./services/getMessages');
+const {postMessages}=require('./services/postMessages');
 const { connection } = require("./connectMongo");
 const {authenticate}=require('./middlewares/autheticate');
 const { addCollege } = require("./services/addCollege");
@@ -43,23 +44,21 @@ app.post("/signUp", async (req, res) => {
     password:password,
     id:id
   });
-  console.log(data.status);
-
-  // database call to check if the email exists or not
-  // if not add email and password to database
-  //else return error
-  //allot db
-  // res.redirect('/login');
-  // const token = SignIn(email, name, id);
-  // res.cookie(token);
+  // console.log(data.status);
   res.send(
     {
-      status:"success"
+      status:"success",
+      data:data
     }
     );
 });
 app.get('/messages',authenticate,async (req,res)=>{
   const message=await getMessages(req.id);
+  res.send(message);
+})
+app.post('/messages',authenticate,async (req,res)=>{
+  const m=req.body.message;
+  const message=await postMessages(req.id,req.name,m);
   // res.send("Working = "+req.name+" "+ req.id);
   res.send(message);
 })
