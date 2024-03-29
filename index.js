@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 require("dotenv").config();
 // Create an instance of the Express application
 const {getMessages}=require('./services/getMessages');
+const {getComments}=require('./services/getComments');
 const {postMessages}=require('./services/postMessages');
 const { connection } = require("./connectMongo");
 const {authenticate}=require('./middlewares/autheticate');
@@ -28,6 +29,15 @@ app.get("/", async (req, res) => {
 app.get("/colleges", async (req, res) => {
   const colleges=await getCollegeList();
   res.send(colleges);
+});
+app.get('/comments',authenticate,async(req,res)=>{
+  const messageId=req.body.id;
+  const roomId=req.id;
+  const comments= await getComments(roomId,messageId);
+  res.send({
+    status:"scuccess",
+    data:comments,
+  })
 });
 app.post("/signUp", async (req, res) => {
   const { email, name, password } = req.body;
