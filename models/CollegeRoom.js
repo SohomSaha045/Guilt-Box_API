@@ -13,9 +13,13 @@ const CollegeRoomSchema =new mongoose.Schema(
     },
     comments:[
     {
-        name:String,
-        message:String
-    },{timestamps:true}
+        name:{
+            type:String
+        },
+        message:{
+            type:String
+        }
+    }
    ]
 },{timestamps:true}
 );
