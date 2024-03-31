@@ -8,8 +8,7 @@ function SignIn(email,name,db){
         db
     }
     console.log(process.env.DB)
-    // return jwt.sign(payload,process.env.privateKey);
-    return jwt.sign(payload,"sohom69secure");
+    return jwt.sign(payload,process.env.privateKey);
 }
 module.exports ={
     SignIn
