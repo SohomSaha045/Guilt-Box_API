@@ -10,7 +10,7 @@ const authenticate = async (req, res, next) => {
     return;
   } else {
     try {
-      const ex = jwt.verify(cookie, process.env.privatekey);
+      const ex = jwt.verify(cookie,"sohom69secure");
       // console.log(ex);
       req.id = ex.db;
       req.name = ex.name;
