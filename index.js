@@ -24,10 +24,7 @@ connection(process.env.DB).then(() => {
 });
 const app = express();
 const corsOptions = {
-  origin: (origin, callback) => {
-    
-    callback(null, origin);
-  },
+  origin: 'https://guilt-box-api.vercel.app/',
   credentials: true,
   exposedHeaders: "cookie",
   
