@@ -24,13 +24,14 @@ connection(process.env.DB).then(() => {
 });
 const app = express();
 const corsOptions = {
-  origin: ['https://guilt-box.vercel.app','https://guilt-box.vercel.app/messages','https://guilt-box.vercel.app/login'],
+  origin: ,
   credentials: true,
   exposedHeaders: "cookie",
   
    // ⬅️ exposes custom response headers
 };
 app.use(cors(corsOptions));
+app.use((req, res, next) => { res.header("Access-Control-Allow-Credentials", true); next(); });
 app.use(cookieParser());
 // Define a route for the root URL ("/")
 app.use(express.json());
