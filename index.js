@@ -25,11 +25,7 @@ connection(process.env.DB).then(() => {
 const app = express();
 const corsOptions = {
   origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) {
-      return callback(null, true);
-    }
-    // Allow requests with credentials by echoing back the origin
+    
     callback(null, origin);
   },
   credentials: true,
