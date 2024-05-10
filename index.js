@@ -24,9 +24,7 @@ connection(process.env.DB).then(() => {
 });
 const app = express();
 const corsOptions = {
-  origin: function (origin, callback) {
-      callback(null, true)
-  },
+  origin: ['http://localhost:3000/','http://localhost:3000/messages','http://localhost:3000/write'],
   credentials: true,
   exposedHeaders: "cookie",
   
