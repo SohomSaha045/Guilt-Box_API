@@ -24,12 +24,11 @@ connection(process.env.DB).then(() => {
 });
 const app = express();
 const corsOptions = {
-  origin: (origin, callback) => {
-    
-    callback(null, origin);
-  },
+  origin: ['http://localhost:3000/messages','http://localhost:3000/'],
   credentials: true,
-  exposedHeaders: "cookie", // ⬅️ exposes custom response headers
+  exposedHeaders: "cookie",
+  
+   // ⬅️ exposes custom response headers
 };
 app.use(cors(corsOptions));
 app.use(cookieParser());
