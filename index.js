@@ -24,14 +24,17 @@ connection(process.env.DB).then(() => {
 });
 const app = express();
 const corsOptions = {
-  origin: ['http://localhost:3000/','http://localhost:3000/messages','http://localhost:3000/write'],
+  origin: (origin, callback) => {
+    
+    callback(null, origin);
+  },
   credentials: true,
   exposedHeaders: "cookie",
+  
   
    // ⬅️ exposes custom response headers
 };
 app.use(cors(corsOptions));
-app.use((req, res, next) => { res.header("Access-Control-Allow-Credentials", true); next(); });
 app.use(cookieParser());
 // Define a route for the root URL ("/")
 app.use(express.json());
