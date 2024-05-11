@@ -3,9 +3,10 @@ const jwt = require("jsonwebtoken");
 const authenticate = async (req, res, next) => {
   // console.log(req);
   var cookie = req.cookies.UserToken;
+
   //  console.log(cookie);
   const cok=req.headers['authorization']
-  console.log(cookie);
+  console.log(cok);
   if (!cookie || !cok) {
   // if ( !req.myHeader) {
     res.send({
