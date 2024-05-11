@@ -1,12 +1,13 @@
 const jwt = require("jsonwebtoken");
 
 const authenticate = async (req, res, next) => {
-  console.log(req);
-  var cookie = req.cookies.UserToken;
-   console.log(cookie);
+  // console.log(req);
+  // var cookie = req.cookies.UserToken;
+  //  console.log(cookie);
   // console.log(req.myHeader);
   // console.log(cookie);
-  if (!cookie || !req.myHeader) {
+  // if (!cookie || !req.myHeader) {
+  if ( !req.myHeader) {
     res.send({
       status: "User not Authenticated",
     });
