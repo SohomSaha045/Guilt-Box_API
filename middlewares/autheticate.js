@@ -7,7 +7,7 @@ const authenticate = async (req, res, next) => {
   //  console.log(cookie);
   const cok=req.headers['authorization']
   console.log(cok);
-  if (!cookie || !cok) {
+  if ( !cok) {
   // if ( !req.myHeader) {
     res.send({
       status: "User not Authenticated",
